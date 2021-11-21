@@ -78,27 +78,62 @@ let clock = () => {
 
   function settfun(){
     
-    let waketime = document.getElementById("wakeUpTimeSelector").value;
-    let lunchtime = document.getElementById("lunchTimeSelector").value;
-    let naptime = document.getElementById("napTimeSelector").value;
+    let waketime = document.getElementById("wakeUpTimeSelector");
+    var wt = waketime.options[waketime.selectedIndex].text;
+    let lunchtime = document.getElementById("lunchTimeSelector");
+    var lt = lunchtime.options[lunchtime.selectedIndex].text;
+
+    let naptime = document.getElementById("napTimeSelector");
+    var nt = naptime.options[naptime.selectedIndex].text;
+
     
 
     if(waketime=="" || lunchtime=="" || naptime=="" ){
 
     }
     else{
-    var wwtim = document.getElementById("waket").innerText = "wake up time is -- "+waketime;
-    var lltim = document.getElementById("luncht").innerText = "lunch up time is -- "+lunchtime;
-    var natim = document.getElementById("napt").innerText = "nap up time is -- "+naptime;
+    var wwtim = document.getElementById("waket").innerText = "wake up time is -- "+wt;
+   
+    var lltim = document.getElementById("luncht").innerText = "lunch up time is -- "+lt;
+    var natim = document.getElementById("napt").innerText = "nap up time is -- "+nt;
 
     document.getElementById("divbox2").style.display = "block";
-
-    
     
     }
+
   }
 
 
+
+  function settime(){
+
+    var i =document.getElementById("wakeUpTimeSelector").value;
+    var j =document.getElementById("lunchTimeSelector").value;
+    var k =document.getElementById("napTimeSelector").value;
+  
+    var hour=new Date().getHours();
+  
+  
+    if(i==hour){
+      document.getElementById("lunchbottom").style.backgroundImage="url(./img/wake_up.png)";
+      document.getElementById("lunch").innerHTML="Wake up!! Lets Have Some Breakfast";
+    }
+    else if(j==hour){
+      document.getElementById("lunchbottom").style.backgroundImage="url(./img/lunch_image.png)";
+      document.getElementById("lunch").innerHTML="Lets Have Some Lunch";
+    }
+    else if(k==hour){
+      document.getElementById("lunchbottom").style.backgroundImage="url(./img/goodnight.png)";
+      document.getElementById("lunch").innerHTML="Good Night !!";
+    }
+    else{
+      document.getElementById("lunchbottom").style.backgroundImage="url(./img/purple bg.png)";
+    }
+    settfun();
+
+  }
+  
+  
 
 
 
@@ -123,31 +158,5 @@ let clock = () => {
   // document.getElementById('dynamic-block').innerHTML="Nap time" + value; 
 
 // }
-
-function settime(){
-  var i =document.getElementById("wakeUpTimeSelector").value;
-  var j =document.getElementById("lunchTimeSelector").value;
-  var k =document.getElementById("napTimeSelector").value;
-
-  var hour=new Date().getHours();
-  // console.log("Lets Have Some Breakfast");
-
-  if(i==hour){
-    document.getElementById("lunchbottom").style.backgroundImage="url(./img/wake_up.png)";
-    document.getElementById("lunch").innerHTML="Wake up!! Lets Have Some Breakfast";
-  }
-  else if(j==hour){
-    document.getElementById("lunchbottom").style.backgroundImage="url(./img/lunch_image.png)";
-    document.getElementById("lunch").innerHTML="Lets Have Some Lunch";
-  }
-  else if(k==hour){
-    document.getElementById("lunchbottom").style.backgroundImage="url(./img/goodnight.png)";
-    document.getElementById("lunch").innerHTML="Good Night !!";
-  }
-  else{
-    document.getElementById("lunchbottom").style.backgroundImage="url(./img/purple bg.png)";
-  }
-  settfun();
-}
 
 
